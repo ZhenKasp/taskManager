@@ -4,5 +4,5 @@
   <%= render 'form' %>
 </div>
 
-<button><%= link_to 'Back', tasks_path %></button>
-<button><%= link_to 'Edit', edit_task_path(@task) %></button>
+<%= button_to 'Back', tasks_path, method: :get %>
+<%= button_to 'Delete', task_path, method: :delete, data: { confirm: 'Are you sure?' } %>

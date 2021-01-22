@@ -6,9 +6,8 @@
         <span><b><%= task.title %></b></span>
       </div>
     <% end %>
+    <hr>
   <% end %>
 
-  <button>
-    <%= link_to 'Create task', new_task_path %>
-  </button>  
+  <%= button_to 'Create task', new_task_path, method: :get %>
 </div>
