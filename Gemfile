@@ -8,6 +8,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'pg', '~> 0.11'
 gem 'devise'
 gem 'test-unit' #fix rails console
+gem 'pry'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,7 +1,7 @@
 <div class="Task">
   <h1><%= @task.title %></h1>
   <p><%= @task.body %></p>
-
-  <%= link_to 'Back', tasks_path %>
-  <%= link_to 'Edit', edit_task_path(@task) %>
 </div>
+
+<button><%= link_to 'Back', tasks_path %></button>
+<button><%= link_to 'Edit', edit_task_path(@task) %></button>

@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :title, :body
+  attr_accessible :title, :body, :user_id
 
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }

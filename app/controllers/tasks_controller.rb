@@ -2,11 +2,14 @@ class TasksController < ApplicationController
     before_filter :authenticate_user!
 
   def index
-    @tasks = Task.all
+    p current_user.tasks
+    p Task.all
+    @tasks = current_user.tasks
   end
 
   def show
-    @task= Task.find(params[:id])
+    @task = Task.where(id: params[:id], user_id: current_user.id).first
+    redirect_to root_path unless @task
   end
 
   def new
@@ -14,7 +17,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(params[:task])
+    @task = Task.new(params[:task].merge(user_id: current_user.id))
+    p @task
 
     if @task.save
       redirect_to @task
@@ -24,20 +28,20 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
+    @task = Task.where(id: params[:id], user_id: current_user.id).first
   end
 
   def update
-    @task = Task.find(params[:id])
-    if @task.update
+    @task = Task.where(id: params[:id], user_id: current_user.id).first
+    if @task&.update_attributes(params[:task])
       redirect_to @task
     else
-      render :edit
+      render :action => "edit"
     end
   end
 
   def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
+    @task = Task.where(id: params[:id], user_id: current_user.id).first
+    @task&.destroy
   end
 end

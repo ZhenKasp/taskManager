@@ -2,7 +2,7 @@
   <h1>Editing task</h1>
 
   <%= render 'form' %>
-
-  <%= link_to tasks_path %>
-  <%= link_to edit_task_path(@task) %>
 </div>
+
+<button><%= link_to 'Back', tasks_path %></button>
+<button><%= link_to 'Edit', edit_task_path(@task) %></button>

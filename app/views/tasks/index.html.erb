@@ -1,12 +1,14 @@
 <div class="TaskList">
   <h1>TODO List</h1>
   <% @tasks.each do |task| %>
-    <div class="Task">
-      <h3><%= task.title %></h3>
-      <p><%= task.body %></p>
-      <%= link_to 'edit', task_path(id: task.id) %>
-    </div>
+    <%= link_to task_path(id: task.id) do %>
+      <div class="Task">
+        <span><b><%= task.title %></b></span>
+      </div>
+    <% end %>
   <% end %>
 
-  <%= link_to 'Create task', new_task_path %>
+  <button>
+    <%= link_to 'Create task', new_task_path %>
+  </button>  
 </div>
