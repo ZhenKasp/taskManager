@@ -42,6 +42,8 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.where(id: params[:id], user_id: current_user.id).first
-    @task&.destroy
+    if @task.destroy
+      redirect_to root_path
+    end
   end
 end
