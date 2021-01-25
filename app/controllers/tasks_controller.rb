@@ -1,14 +1,13 @@
 class TasksController < ApplicationController
-    before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   def index
-    p current_user.tasks
-    p Task.all
     @tasks = current_user.tasks
   end
 
   def show
-    @task = Task.where(id: params[:id], user_id: current_user.id).first
+    @task = current_user.tasks.find(params[:id])
+
     redirect_to root_path unless @task
   end
 
@@ -17,8 +16,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(params[:task].merge(user_id: current_user.id))
-    p @task
+    @task = current_user.tasks.build(params[:task])
 
     if @task.save
       redirect_to @task
@@ -28,20 +26,20 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.where(id: params[:id], user_id: current_user.id).first
+    @task = current_user.tasks.find(params[:id])
   end
 
   def update
-    @task = Task.where(id: params[:id], user_id: current_user.id).first
-    if @task&.update_attributes(params[:task])
+    @task = current_user.tasks.find(params[:id])
+    if @task.update_attributes(params[:task])
       redirect_to @task
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 
   def destroy
-    @task = Task.where(id: params[:id], user_id: current_user.id).first
+    @task = current_user.tasks.find(params[:id])
     if @task.destroy
       redirect_to root_path
     end
