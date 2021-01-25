@@ -1,3 +1,15 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(document).ready ->
+  $('.task-check').click ->
+    element = $(this)
+
+    $.ajax(
+      '/tasks/' + element.data('taskId'),
+  		type: 'DELETE',
+  		dataType: 'html',
+  		error: (jqXHR, textStatus, errorThrown) ->
+  			$('.alert').append "AJAX Error: #{textStatus}"
+  		success: (data, textStatus) ->
+        $('.notice').append "Successful AJAX call"
+        element.parent('div').fadeOut(2000, ->
+          element.parent('div').remove())
+    )

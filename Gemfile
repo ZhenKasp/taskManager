@@ -6,6 +6,7 @@ gem 'pg', '~> 0.11'
 gem 'devise'
 gem 'test-unit'
 gem 'pry'
+gem 'jquery-rails'
 
 group :test, :development do
   gem 'dotenv-rails'

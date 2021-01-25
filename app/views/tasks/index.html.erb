@@ -1,12 +1,13 @@
 <div class="task-list">
   <h1>TODO List</h1>
   <% @tasks.each do |task| %>
-    <%= link_to task_path(id: task.id), class: "task-link" do %>
-      <div class="task">
-        <span><b><%= task.title %></b></span>
-      </div>
-    <% end %>
+    <div class="task-list-element">
+      <%= check_box 'task_checked', task.id, { class: 'task-check', data: { task_id: task.id } }, 1, nil %>
+      <label for="task_checked_<%= task.id%>" class="task-check-box"></label> 
+      <%= link_to task.title, task_path(id: task.id), class: "task-link" %>
+    </div>
   <% end %>
-
-  <%= button_to 'Create task', new_task_path, method: :get %>
+  <div class="task-list-element">
+    <%= button_to 'Create task', new_task_path, class: "btn-add-new-task", method: :get %>
+  </div>
 </div>
