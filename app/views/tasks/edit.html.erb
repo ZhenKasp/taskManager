@@ -1,8 +1,0 @@
-<div class="task">
-  <h1>Editing task</h1>
-
-  <%= render 'task_form' %>
-</div>
-
-<%= button_to 'Back', tasks_path, method: :get %>
-<%= button_to 'Delete', task_path, method: :delete, data: { confirm: 'Are you sure?' } %>

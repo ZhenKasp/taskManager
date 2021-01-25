@@ -5,6 +5,7 @@ gem 'rails', '3.2.11'
 gem 'pg', '~> 0.11'
 gem 'devise'
 gem 'jquery-rails'
+gem 'haml-rails'
 
 group :test, :development do
   gem 'dotenv-rails'

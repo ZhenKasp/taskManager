@@ -1,0 +1,5 @@
+.task
+  %h1 Editing task
+  = render 'task_form'
+= button_to 'Back', tasks_path, method: :get
+= button_to 'Delete', task_path, method: :delete, data: { confirm: 'Are you sure?' }
