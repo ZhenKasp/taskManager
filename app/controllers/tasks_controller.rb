@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    redirect_to root_path unless task
+    task
   end
 
   def new
@@ -34,13 +34,15 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path unless task.destroy
+    redirect_to root_path if task.destroy
   end
 
   private
 
   def task
-    @task ||= Task.find(params[:id])
+    @task ||= current_user.tasks.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
   end
 
   def build_task
