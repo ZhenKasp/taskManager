@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+ruby '2.3.8'
+gem 'rails', '3.2.22'
 
-gem 'pg', '~> 0.11'
+gem 'pg', '~> 0.20'
 gem 'devise'
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -10,10 +11,12 @@ gem 'haml-rails'
 group :test, :development do
   gem 'dotenv-rails'
   gem 'pry'
+  gem 'rspec'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'test-unit', '~> 3.0'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.5'
   gem 'simplecov'
   gem 'simplecov-json'
 end
