@@ -14,6 +14,7 @@ group :test, :development do
   gem 'rspec'
   gem 'rspec-rails', '~> 3.5'
   gem 'test-unit', '~> 3.0'
+  gem 'factory_girl_rails', require: false
 end
 
 group :test do
