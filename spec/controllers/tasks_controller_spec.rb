@@ -16,7 +16,9 @@ describe TasksController, type: :controller do
       it 'assigns user tasks to instance variable' do
         subject
 
-        expect(controller.instance_variable_get(:@tasks)).to eq([task])
+        expected_task = { task.due_time.to_date => [task] }
+
+        expect(controller.instance_variable_get(:@tasks)).to eq(expected_task)
       end
     end
 

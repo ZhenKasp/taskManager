@@ -9,11 +9,14 @@
           %li= msg
   .field
     = f.label :title
-    %br/
+    %p
     = f.text_field :title, required: true
   .field
     = f.label :body
-    %br/
+    %p
     = f.text_area :body, required: true
-  .actions
-    = f.submit 'Sumbit', class: 'SubmitButton'
+    %p
+      = f.datetime_select :due_time, value: @task.due_time, default: 1.days.from_now
+    %p
+      .actions
+        = f.submit 'Submit', class: 'SubmitButton'

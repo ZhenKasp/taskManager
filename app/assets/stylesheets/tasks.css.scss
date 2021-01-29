@@ -8,7 +8,7 @@ $duration: .4s;
 .task-list {
   text-align: center;
   margin: 30px auto 0px auto;
-  max-width: 50%;
+  max-width: 80%;
 }
 
 .task {
@@ -17,12 +17,12 @@ $duration: .4s;
   border: 1px solid #ddd;
   margin: 10px auto;
   padding: 10px;
-  max-width: 50%;
 }
 
 .task-list-element {
   display: flex;
-  background: #eee;
+  background: #9bd4ff;
+  border-radius: 5px;
   border: 1px solid #ddd;
   margin: 10px auto;
   padding: 10px;
@@ -45,6 +45,19 @@ $duration: .4s;
 
 .btn-add-new-task {
   display: flex;
+}
+
+.tasks_list_date {
+  padding: 10px;
+  margin: 10px;
+  border: 1px dashed #808080;
+  border-radius: 8px;
+  background: #e5ffde;
+}
+
+.date {
+  font-size: 20px;
+  text-decoration: underline;
 }
 
 @-moz-keyframes dothabottomcheck{
@@ -115,9 +128,6 @@ $duration: .4s;
   transform-origin: left top;
   border-radius: 5px;
   content: ' ';
-  -webkit-transition: opacity ease .5;
-  -moz-transition: opacity ease .5;
-  transition: opacity ease .5;
   }
 
   &::before {
