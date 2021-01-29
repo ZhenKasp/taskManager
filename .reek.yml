@@ -1,0 +1,41 @@
+directories:
+  "app/controllers":
+    NestedIterators:
+      max_allowed_nesting: 2
+    UnusedPrivateMethod:
+      enabled: false
+    InstanceVariableAssumption:
+      enabled: false
+  "app/helpers":
+    UtilityFunction:
+      enabled: false
+  "app/mailers":
+    InstanceVariableAssumption:
+      enabled: false
+  "app/models":
+    InstanceVariableAssumption:
+      enabled: false
+
+detectors:
+  ControlParameter:
+    enabled: false
+  IrresponsibleModule:
+    enabled: false
+  NilCheck:
+    enabled: false
+  TooManyInstanceVariables:
+    max_instance_variables: 6
+  UtilityFunction:
+    enabled: false
+  UncommunicativeModuleName:
+    enabled: false
+  MissingSafeMethod:
+    enabled: false
+
+exclude_paths:
+  - vendor/
+  - lib/
+  - db/
+  - app/views/
+  - config/
+  - node_modules/

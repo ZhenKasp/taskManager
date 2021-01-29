@@ -6,3 +6,12 @@ development:
   pool: <%= ENV['POOL'] %>
   username: <%= ENV['NAME'] %>
   password: <%= ENV['PASSWORD'] %>
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['DATABASE'] + '_test' %>
+  host: <%= ENV['HOST'] %>
+  pool: <%= ENV['POOL'] %>
+  username: <%= ENV['NAME'] %>
+  password: <%= ENV['PASSWORD'] %>

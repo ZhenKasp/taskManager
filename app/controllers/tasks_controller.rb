@@ -6,42 +6,44 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = current_user.tasks.find(params[:id])
-
-    redirect_to root_path unless @task
+    task
   end
 
   def new
-    @task = Task.new
+    build_task
   end
 
   def create
-    @task = current_user.tasks.build(params[:task])
-
-    if @task.save
-      redirect_to @task
+    if build_task.save
+      redirect_to task
     else
       render :new
     end
   end
 
   def edit
-    @task = current_user.tasks.find(params[:id])
+    task
   end
 
   def update
-    @task = current_user.tasks.find(params[:id])
-    if @task.update_attributes(params[:task])
-      redirect_to @task
+    if task.update_attributes(params[:task])
+      redirect_to task
     else
-      render action: "edit"
+      render action: :edit
     end
   end
 
   def destroy
-    @task = current_user.tasks.find(params[:id])
-    if @task.destroy
-      redirect_to root_path
-    end
+    redirect_to root_path if task.destroy
+  end
+
+  private
+
+  def task
+    @task ||= current_user.tasks.find(params[:id])
+  end
+
+  def build_task
+    @task = current_user.tasks.build(params[:task])
   end
 end
