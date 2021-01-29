@@ -3,7 +3,7 @@
   - @tasks.each do |task|
     .task-list-element
       = check_box 'task_checked', task.id, { class: 'task-check', data: { task_id: task.id } }, 1, nil
-      %label.task-check-box{for: 'task_checked_#{task.id}'}
+      %label.task-check-box{for: "task_checked_#{task.id}"}
       = link_to task.title, task_path(id: task.id), class: 'task-link'
   .task-list-element
     = button_to 'Create task', new_task_path, class: 'btn-add-new-task', method: :get

@@ -1,6 +1,6 @@
 $ ->
-  $('.task-check').click ->
-    $taskCheckbox = $(this)
+  $('.task-check-box').click ->
+    $taskCheckbox = $(this).parent().find('.task-check')
 
     $.ajax(
       '/tasks/' + $taskCheckbox.data('taskId'),
