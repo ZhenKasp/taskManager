@@ -1,0 +1,17 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.3.8
+services:
+  - postgresql
+
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c "CREATE DATABASE travis_ci_test;" -U postgres
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+
+script:
+  - bundle exec rubocop
+  - bundle exec reek
+  - bundle exec rspec
