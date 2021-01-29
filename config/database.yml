@@ -4,8 +4,8 @@ development:
   database: <%= ENV['DATABASE'] %>
   host: <%= ENV['HOST'] %>
   pool: <%= ENV['POOL'] %>
-  username: <%= ENV['NAME'] %>
-  password: <%= ENV['PASSWORD'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 test:
   adapter: postgresql
@@ -13,5 +13,5 @@ test:
   database: <%= ENV['DATABASE'] + '_test' %>
   host: <%= ENV['HOST'] %>
   pool: <%= ENV['POOL'] %>
-  username: <%= ENV['NAME'] %>
-  password: <%= ENV['PASSWORD'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
