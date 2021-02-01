@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def render_something_happened
+  def render_something_happened(error)
+    raise error if Rails.env.development?
+
     render json: { error: 'Something bad happen. Try again later.' }, status: :bad_request
   end
 end

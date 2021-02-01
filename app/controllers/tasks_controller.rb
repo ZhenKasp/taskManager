@@ -29,12 +29,14 @@ class TasksController < ApplicationController
     if task.update_attributes(task_params)
       redirect_to task
     else
-      render action: :edit
+      render :edit
     end
   end
 
   def destroy
-    redirect_to root_path if task.destroy
+    task.destroy
+
+    redirect_to root_path
   end
 
   private
@@ -48,14 +50,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    return unless params[:task]
-
-    date_params = (1..5).map { |index| params[:task]["due_time(#{index}i)"].to_i }
-    params[:task].merge(due_time: (begin
-                                     DateTime.civil(*date_params)
-                                   rescue ArgumentError
-                                     DateTime.current + 1.day
-                                   end)
-                       )
+    params.fetch(:task, {})
   end
 end
