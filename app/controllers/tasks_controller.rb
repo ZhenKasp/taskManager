@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.group_by { |task| task.due_time.to_date }
   end
 
   def show
@@ -26,15 +26,17 @@ class TasksController < ApplicationController
   end
 
   def update
-    if task.update_attributes(params[:task])
+    if task.update_attributes(task_params)
       redirect_to task
     else
-      render action: :edit
+      render :edit
     end
   end
 
   def destroy
-    redirect_to root_path if task.destroy
+    task.destroy
+
+    redirect_to root_path
   end
 
   private
@@ -44,6 +46,10 @@ class TasksController < ApplicationController
   end
 
   def build_task
-    @task = current_user.tasks.build(params[:task])
+    @task = current_user.tasks.build(task_params)
+  end
+
+  def task_params
+    params.fetch(:task, {})
   end
 end
